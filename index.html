@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html lang="en-US">
+  <head>
+    <title>Thompson Falls Disc Golf 🥏</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, inital-scale=1" />
+    <meta name="Keywords" content="Thopmson Falls, Disc Golf" />
+    <meta
+      name="Description"
+      content="Get all the information you need about the latest course conditions and events."
+    />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/main.css" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      var skipUpdate = false;
+
+      function socialFunction() {
+        document.getElementById("ssbs").classList.toggle("show");
+        skipUpdate = true;
+      }
+
+      //Close the dropdown menu if the user clicks outside of it
+      window.onclick = function (event) {
+        if (!event.target.matches(".static-socials") && !skipUpdate) {
+          var dropdowns = document.getElementsByClassName("static-social-btns");
+          var i;
+          for (i = 0; i < dropdowns.length; i++) {
+            var openDropdown = dropdowns[i];
+            if (openDropdown.classList.contains("show")) {
+              openDropdown.classList.remove("show");
+            }
+          }
+        } else {
+          skipUpdate = false;
+        }
+      };
+    </script>
+
+    <script>
+      var root = document.querySelector(":root");
+
+      function visualToggleFunction() {
+        var vti = document.getElementById("visual-toggle-icon");
+        if (vti.classList.contains("bx-moon")) {
+          vti.classList.replace("bx-moon", "bxs-moon");
+
+          root.style.setProperty("--primary-text", "white");
+          root.style.setProperty("--primary-button", "white");
+          root.style.setProperty("--primary-button-text", "black");
+          root.style.setProperty("--primary-bg", "black");
+
+          document
+            .querySelector(".invert-on-toggle")
+            .style.setProperty("filter", "invert(1.0)");
+        } else {
+          vti.classList.replace("bxs-moon", "bx-moon");
+
+          root.style.setProperty("--primary-text", "black");
+          root.style.setProperty("--primary-button", "black");
+          root.style.setProperty("--primary-button-text", "white");
+          root.style.setProperty("--primary-bg", "white");
+
+          document
+            .querySelector(".invert-on-toggle")
+            .style.setProperty("filter", "invert(0.0)");
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <header>
+      <div id="visual-toggle" onclick="visualToggleFunction()">
+        <i class="bx bx-moon" id="visual-toggle-icon"></i>
+      </div>
+    </header>
+
+    <!-- THOMPSON FALLS DISC GOLF -->
+    <div id="banner">
+      <p1>Thompson Falls Disc Golf</p1>
+    </div>
+
+    <!-- 🥏 COURSE UPDATES -->
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        justify-content: center;
+      "
+    >
+      <p1
+        style="
+          color: var(--primary-text);
+          font-size: xx-large;
+          text-align: center;
+          margin: 2rem auto 0 auto;
+        "
+        >🥏 Course Updates</p1
+      >
+      <div id="social-updates">
+        <div class="social-updates-panel">
+          <!--
+          <iframe
+            src="https://www.facebook.com/plugins/group.php?href=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F1372886066895423&width=280&show_metadata=false&height=0&appId"
+            width="280"
+            height="0"
+            style="border: none; overflow: hidden"
+            scrolling="no"
+            frameborder="0"
+            allowfullscreen="true"
+            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+          ></iframe>
+        -->
+          <script
+            async
+            defer
+            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"
+          ></script>
+          <div
+            class="fb-post"
+            data-href="https://www.facebook.com/20531316728/posts/10154009990506729/"
+            style="width:100%; height:100%;"
+          ></div>
+        </div>
+
+        <div class="social-updates-panel">
+          <widgetbot
+            server="1104874560010068011"
+            channel="1104886715820290178"
+            width="100%"
+            height="100%"
+          ></widgetbot>
+          <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
+        </div>
+        <!--
+        <div class="social-updates-panel">
+
+        </div>
+    -->
+      </div>
+    </div>
+
+    <!-- COURSE PICTURES/MAP -->
+    <div style="margin-top: 5rem">
+      <div style="display: flex">
+        <div
+          style="
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+          "
+        >
+          <p3>Course Information</p3>
+          <ul>
+            <li>9 Holes</li>
+          </ul>
+        </div>
+        <div style="width: 100%; margin: 2rem">
+          <img
+            src="assets/DSC01283.JPG"
+            width="100%"
+            height="100%"
+            style="border-radius: 7px"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+      <div id="static-socials" onclick="socialFunction()">
+        <i class="bx bxs-chevron-up"></i>
+      </div>
+      <div class="static-social-btns" id="ssbs">
+        <a
+          class="static-social-btn"
+          style="
+            background-image: url('assets/f_logo_RGB-Blue_1024.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+          "
+          href="https://www.facebook.com/groups/1372886066895423"
+          target="_blank"
+        ></a>
+        <a
+          class="static-social-btn invert-on-toggle"
+          style="
+            background-image: url('assets/discord-mark-white.png');
+            background-repeat: no-repeat;
+            background-size: contain;
+          "
+          href="https://discord.gg/PY3rbwNdcE"
+          target="_blank"
+        ></a>
+        <a
+          class="static-social-btn"
+          style="
+            background-image: url('');
+            background-repeat: no-repeat;
+            background-size: contain;
+          "
+          href="#"
+          target="_blank"
+        ></a>
+      </div>
+    </footer>
+  </body>
+</html>
