@@ -1,224 +1,159 @@
 <!DOCTYPE html>
-
-<html lang="en-US">
+<html lang="en" theme-data="light">
   <head>
-    <title>Thompson Falls Disc Golf 🥏</title>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, inital-scale=1" />
-    <meta name="Keywords" content="Thopmson Falls, Disc Golf" />
-    <meta
-      name="Description"
-      content="Get all the information you need about the latest course conditions and events."
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="keywords" content="thompson falls disc golf, thompson falls, disc golf, disc, golf, mountains, montana, montana disc golf" />
+    <meta name="description" content="All the information you need to know about the Thompson Falls disc golf course." />
+    <meta name="robot" content="index, follow" />
+    <meta name="theme-color" content="limegreen" />
+    
+    <meta property="og:image" content="https://tfdiscgolf.com/assets/android-chrome-512x512.png">
+    <meta property="og:title" content="Thompson Falls Disc Golf Course" />
+    <meta property="og:description" content="Get all the information you need to know about the Thompson Falls Disc Golf Course!" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tfdiscgolf.com/" />
 
+    <base href="https://tfdiscgolf.com/" />
+
+    <title>TF Disc Golf</title>
+
+    <link rel="stylesheet" href="./styles/index.css" />
+    
     <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="./assets/apple-touch-icon.png"
     />
-    <link rel="stylesheet" href="style/main.css" />
-
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap"
-      rel="stylesheet"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
     />
-
-    <script>
-      var skipUpdate = false;
-
-      function socialFunction() {
-        document.getElementById("ssbs").classList.toggle("show");
-        skipUpdate = true;
-      }
-
-      //Close the dropdown menu if the user clicks outside of it
-      window.onclick = function (event) {
-        if (!event.target.matches(".static-socials") && !skipUpdate) {
-          var dropdowns = document.getElementsByClassName("static-social-btns");
-          var i;
-          for (i = 0; i < dropdowns.length; i++) {
-            var openDropdown = dropdowns[i];
-            if (openDropdown.classList.contains("show")) {
-              openDropdown.classList.remove("show");
-            }
-          }
-        } else {
-          skipUpdate = false;
-        }
-      };
-    </script>
-
-    <script>
-      var root = document.querySelector(":root");
-
-      function visualToggleFunction() {
-        var vti = document.getElementById("visual-toggle-icon");
-        if (vti.classList.contains("bx-moon")) {
-          vti.classList.replace("bx-moon", "bxs-moon");
-
-          root.style.setProperty("--primary-text", "white");
-          root.style.setProperty("--primary-button", "white");
-          root.style.setProperty("--primary-button-text", "black");
-          root.style.setProperty("--primary-bg", "black");
-
-          document
-            .querySelector(".invert-on-toggle")
-            .style.setProperty("filter", "invert(1.0)");
-        } else {
-          vti.classList.replace("bxs-moon", "bx-moon");
-
-          root.style.setProperty("--primary-text", "black");
-          root.style.setProperty("--primary-button", "black");
-          root.style.setProperty("--primary-button-text", "white");
-          root.style.setProperty("--primary-bg", "white");
-
-          document
-            .querySelector(".invert-on-toggle")
-            .style.setProperty("filter", "invert(0.0)");
-        }
-      }
-    </script>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon-16x16.png"
+    />
+    <link rel="manifest" href="./assets/site.webmanifest" />
+    
   </head>
-
   <body>
-    <header>
-      <div id="visual-toggle" onclick="visualToggleFunction()">
-        <i class="bx bx-moon" id="visual-toggle-icon"></i>
+    <div class="navbar">
+      <div id="message-box" class="">
+        <h3>
+          IMPORTANT: This course is still in negotiation, no construction has
+          been started.
+        </h3>
       </div>
-    </header>
-
-    <!-- THOMPSON FALLS DISC GOLF -->
-    <div id="banner">
-      <p1>Thompson Falls Disc Golf</p1>
+      <i id="theme-toggle-button">
+        <img
+          id="theme-icon-light"
+          alt=""
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAn9JREFUaEPtmPFRFjEQxR8VaAdiBUgHUgFaAVCBUolSAVABdKAdKBUAHUAFOr+Z22/CThI2yXfgjZcZ/gA2m/d23272sqOFr52F49dK4LUzOGcG/jhys5w1i9MJ+EogIs//KgNvJX2UdB2JjKReCX2S9FPSQ+ScaAYA/0PSB0knki4CznsIHEs6l/Rb0kGERIRACt5wR0kEeG5MDLz9IUQiQoCUXmWQbJOEB2/HfX5OshECOCsdQJrR68iirpCnX6EARQnkSFxOxEbA215q6ihxFAKPfQuBlEQNPECIKj+7E6i7KVNki725ZSTC4HsIsAdgOdlQK98S0KXMQOa0oO2S72KWWzNQcgTwr41a+j4Radz21HwbBADypRPFWQfxJ0eNEii1WIChaXo5iwuQTpYj+myrrAVnlMCt0/zjVCMG3J8NEernTfIPauJ9Zwabu1B6Tu5u2E+iXsIEiV/un02dJ907kgGGusPEWYuefd103yk5An4IM4ze1ssnEn3z5bOA5NifrhCOEQI902YNoMeyEvBF6CNE93iXGI1I6GZqtVuRULSj/bNFHCWw+DYKUS8jvmP5RqhdZMz+fOXZug8MgMWgjtwDOC2NEvR5ens6SjBm5wa+Vx0lILHoYc5S20Oi5ebeqoRqHzQQSVtr7mA0j5Ry70uzf9BY52FUZgDLLWwAwriwNxnQ56kHJtHSmxLvQextGuxaiti3zRqJaCs2OwNvv4dJRAks+lll8Q9bXDpo1/RMmsMpbtCSzzJ1Qy1VH3mjEkpJRMH3jNtGIgSe4EQJYLvo5/UGJWxMezLQfE5LBlqdrwQiEVszEInSnDZzZmBO3BvfK4EXCXPlkL+58ZgxADNT5wAAAABJRU5ErkJggg=="
+        />
+        <img
+          id="theme-icon-dark"
+          class="hide"
+          alt=""
+          src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAA0RJREFUaEPtmY+xDEEQxr8XATIggkcEiAARPCJABIgAESCCRwSIABEgAkRA/dR2Veubf7szc+6qXlddcXu7O/11f/11z7wTHbmdHLn/ugDwvzM4KgNXJT2UdH8BdE/Sh32A6wVwR9IjSbeCs98kXTtkANclvZLEvyn7JenyoQK4uzhfcvBjIitT8Kyl0POFMjVn3rh6qN3b9fsaAO8zUX0n6aekM+fJM0lPuzxrfLgVwItFZfxr4Tl0Qm1w9on78fYhqRDSSMF6+7I4j9pgEQAy+rYxiF231TKAvn8NK3xf1AfamEUAB0Oh14Hb0AbN/xxARQAvG4u9K/o8XMoAjlK43nLUiPcehIxG1ak59TuAvbKoU3eUSy/IZSDF/ZqyoEY33WKPJaFeUy0HICoPqpMbG8xBZiIandle5qEcACSQQc2sJZqMFjh9yT33QBJCMM1yACKfmSxN80vORDVCaqFeVK1hgFIAiOQPt8KayTKVBZwHhO8bUwH0SmKsBZyFkkjwcEtloBcATsYGaNeopaGZmAUAKiGrpyHkw+k0CwB+00tw2KsS18kA/YFxozsbMwEYCPgfM+GBsJ/YrFKtMlqbWkvFCZ2oCd9X4v1INCAMCJmxLSs1SRPlGn3ln9OOnGPc7FN/oydKi7f0CBQqUmqNMu109xyAqCKjxmOiChDOkLbYTk/KAWCreO5WGD3XUOCswccPgDVQO4HMAYjdmBfPmmtYC47z4f/2naD5gwJ82BlpSsUZaTQ6C7VowwAyZIZa+e9/r5cApHR8X3vd5t1gTR7jdDmTShZpAvcpHE1m9yM1AKnpcuaIzHpsZf3mCeXhe3KcrwEgKjxM8/D6DQgGs5GbFdaB92TAW/GMqQUAL0sdbnGdxoS09VruwLjaf1oB4GCqHrhOasnGlpM4os4+Ov59gffWTkGqKpSKai4T3MscA6VYuDScQRGalzWy1DrNp9trMmALpWoiOkGNpAYznI8cj8+uaphbALAgasFMHztlTy2QOWpq1Wi9FYDXbICURuUaKDQexzf9UbAXgDlHRozTFGRtZCbaFD2fluOabBBGAYgL2EBmdLOtI852ORwXmgWgRpthv18AGBbKjS86+gz8AXzvqzGBGB2lAAAAAElFTkSuQmCC"
+        />
+      </i>
     </div>
-
-    <!-- 🥏 COURSE UPDATES -->
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        justify-content: center;
-      "
-    >
-      <p1
-        style="
-          color: var(--primary-text);
-          font-size: xx-large;
-          text-align: center;
-          margin: 2rem auto 0 auto;
-        "
-        >🥏 Course Updates</p1
-      >
-      <div id="social-updates">
-        <div class="social-updates-panel">
-          <!--
-          <iframe
-            src="https://www.facebook.com/plugins/group.php?href=https%3A%2F%2Fwww.facebook.com%2Fgroups%2F1372886066895423&width=280&show_metadata=false&height=0&appId"
-            width="280"
-            height="0"
-            style="border: none; overflow: hidden"
-            scrolling="no"
-            frameborder="0"
-            allowfullscreen="true"
-            allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
-          ></iframe>
-        -->
-          <script
-            async
-            defer
-            src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.2"
-          ></script>
-          <div
-            class="fb-post"
-            data-href="https://www.facebook.com/20531316728/posts/10154009990506729/"
-            style="width:100%; height:100%;"
-          ></div>
-        </div>
-
-        <div class="social-updates-panel">
-          <widgetbot
-            server="1104874560010068011"
-            channel="1104886715820290178"
-            width="100%"
-            height="100%"
-          ></widgetbot>
-          <script src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
-        </div>
-        <!--
-        <div class="social-updates-panel">
-
-        </div>
-    -->
+    <div id="page-landing" class="section">
+      <h1 id="site-title">Thompson Falls Disc Golf Course</h1>
+      <div class="hero">
+        <h3>CURRENT STAGE</h3>
+        <p>Talks with landowner about land use.</p>
+        <div class="button"><a href="#timeline">SEE MORE</a></div>
       </div>
     </div>
-
-    <!-- COURSE PICTURES/MAP -->
-    <div style="margin-top: 5rem">
-      <div style="display: flex">
-        <div
-          style="
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-            justify-content: center;
-            align-items: center;
-          "
-        >
-          <p3>Course Information</p3>
-          <ul>
-            <li>9 Holes</li>
-          </ul>
-        </div>
-        <div style="width: 100%; margin: 2rem">
-          <img
-            src="assets/DSC01283.JPG"
-            width="100%"
-            height="100%"
-            style="border-radius: 7px"
-          />
-        </div>
+    <div id="update" class="section">
+      <h4>PROPOSED LAND & USE</h4>
+      <div id="location" class="container">
+        <iframe
+          width="100%"
+          height="100%"
+          loading="lazy"
+          allowfullscreen
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3432.529628158445!2d-115.36313804254253!3d47.59920853310672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1684115832740!5m2!1sen!2sus"
+          frameborder="0"
+          style="border-radius: var(--tfdg-border-radius)"
+        ></iframe>
       </div>
     </div>
+    <div id="socials" class="section">
+      <div class="container">
+        <widgetbot
+          server="1104874560010068011"
+          channel="1104886715820290178"
+          width="100%"
+          height="100%"
+        ></widgetbot>
+      </div>
+    </div>
+    <div id="timeline" class="section">
+      <h4>TIMELINE</h4>
+      <div class="container">
+        <ul id="timeline-items" class="list-group">
+          <li class="list-item item-complete">
+            <box-icon name="money-withdraw"></box-icon>
+            <p>Securing funding and approval/cooperation from the town.</p>
+          </li>
+          <li class="list-item item-complete">
+            <box-icon name="conversation"></box-icon>
+            <p>Contact landowners and starting talks.</p>
+          </li>
+          <li class="list-item item-complete">
+            <box-icon name="alarm-exclamation"></box-icon>
+            <p>Create and share safety information.</p>
+          </li>
+          <li class="list-item item-current">
+            <box-icon name="edit-location" type="solid"></box-icon>
+            <p>Complete land use agreement.</p>
+          </li>
+          <li class="list-item item-upcoming">
+            <box-icon name="pencil"></box-icon>
+            <p>Create course design & layout.</p>
+          </li>
+          <li class="list-item item-upcoming">
+            <box-icon name="message-check"></box-icon>
+            <p>Get course approval from landowners.</p>
+          </li>
+          <li class="list-item item-upcoming">
+            <box-icon name="hard-hat"></box-icon>
+            <p>Breaking ground & site construction.</p>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <script>
+      document
+        .querySelector('meta[name="theme-color"]')
+        .setAttribute(
+          "content",
+          getComputedStyle(document.documentElement).getPropertyValue(
+            "--tfdg-course-condition"
+          )
+        );
+    </script>
+    
+    <script src="./scripts/theme.js"></script>
+    
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE3HTEEVDN"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
 
-    <!-- FOOTER -->
-    <footer>
-      <div id="static-socials" onclick="socialFunction()">
-        <i class="bx bxs-chevron-up"></i>
-      </div>
-      <div class="static-social-btns" id="ssbs">
-        <a
-          class="static-social-btn"
-          style="
-            background-image: url('assets/f_logo_RGB-Blue_1024.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-          "
-          href="https://www.facebook.com/groups/1372886066895423"
-          target="_blank"
-        ></a>
-        <a
-          class="static-social-btn invert-on-toggle"
-          style="
-            background-image: url('assets/discord-mark-white.png');
-            background-repeat: no-repeat;
-            background-size: contain;
-          "
-          href="https://discord.gg/PY3rbwNdcE"
-          target="_blank"
-        ></a>
-        <a
-          class="static-social-btn"
-          style="
-            background-image: url('');
-            background-repeat: no-repeat;
-            background-size: contain;
-          "
-          href="#"
-          target="_blank"
-        ></a>
-      </div>
-    </footer>
+        gtag('config', 'G-KE3HTEEVDN');
+    </script>
+    <script async src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script async src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
   </body>
 </html>
