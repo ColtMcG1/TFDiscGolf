@@ -14,7 +14,7 @@
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://tfdiscgolf.com/" />
 
-    <base href="https://tfdiscgolf.com/" />
+    <!--<base href="https://tfdiscgolf.com/" />-->
 
     <title>TF Disc Golf</title>
 
@@ -38,6 +38,9 @@
       href="./assets/favicon-16x16.png"
     />
     <link rel="manifest" href="./assets/site.webmanifest" />
+
+    <script src="./scripts/module1.js"></script>
+    <script src="./scripts/module2.js"></script>
     
   </head>
   <body>
@@ -73,16 +76,7 @@
     <div id="update" class="section">
       <h4>PROPOSED LAND & USE</h4>
       <div id="location" class="container">
-        <iframe
-          width="100%"
-          height="100%"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d3432.529628158445!2d-115.36313804254253!3d47.59920853310672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2sus!4v1684115832740!5m2!1sen!2sus"
-          frameborder="0"
-          style="border-radius: var(--tfdg-border-radius)"
-        ></iframe>
+        <div id="map" class="container"></div>
       </div>
     </div>
     <div id="socials" class="section">
@@ -99,31 +93,31 @@
       <h4>TIMELINE</h4>
       <div class="container">
         <ul id="timeline-items" class="list-group">
-          <li class="list-item item-complete">
+          <li class="list-item item-complete"> <!-- Item completed -->
             <box-icon name="money-withdraw"></box-icon>
             <p>Securing funding and approval/cooperation from the town.</p>
           </li>
-          <li class="list-item item-complete">
+          <li class="list-item item-complete"> <!-- Item completed -->
             <box-icon name="conversation"></box-icon>
             <p>Contact landowners and starting talks.</p>
           </li>
-          <li class="list-item item-complete">
+          <li class="list-item item-complete"> <!-- Item completed -->
             <box-icon name="alarm-exclamation"></box-icon>
             <p>Create and share safety information.</p>
           </li>
-          <li class="list-item item-current">
+          <li class="list-item item-current"> <!-- Item CURRENT -->
             <box-icon name="edit-location" type="solid"></box-icon>
             <p>Complete land use agreement.</p>
           </li>
-          <li class="list-item item-upcoming">
+          <li class="list-item item-upcoming"> <!-- Item upcoming -->
             <box-icon name="pencil"></box-icon>
             <p>Create course design & layout.</p>
           </li>
-          <li class="list-item item-upcoming">
+          <li class="list-item item-upcoming"> <!-- Item upcoming -->
             <box-icon name="message-check"></box-icon>
             <p>Get course approval from landowners.</p>
           </li>
-          <li class="list-item item-upcoming">
+          <li class="list-item item-upcoming"> <!-- Item upcoming -->
             <box-icon name="hard-hat"></box-icon>
             <p>Breaking ground & site construction.</p>
           </li>
@@ -142,17 +136,22 @@
         );
     </script>
     
-    <script src="./scripts/theme.js"></script>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXadE7NnDDpd0QzkrNjL2TT2aZnmT8ZJA&callback=initMap?v=weekly" defer></script>-->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXadE7NnDDpd0QzkrNjL2TT2aZnmT8ZJA&callback=initMap&v=weekly"
+      defer
+    ></script>
     
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE3HTEEVDN"></script>
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      
+      gtag('config', 'G-KE3HTEEVDN');
+      </script>
 
-        gtag('config', 'G-KE3HTEEVDN');
-    </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KE3HTEEVDN"></script>
     <script async src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
     <script async src="https://cdn.jsdelivr.net/npm/@widgetbot/html-embed"></script>
   </body>

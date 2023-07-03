@@ -179,6 +179,8 @@ p{
     height: 4rem;
 
     background-color: #0000;
+
+    z-index: 100;
 }
 
 .navbar #message-box{
@@ -236,6 +238,12 @@ p{
 #location{
     width: clamp(200px, 60%, 1080px);
     aspect-ratio: 16/9;
+}
+#map{
+    width:100%;
+    height:100%;
+
+    border-radius: var(--tfdg-border-radius);
 }
 
 @media only screen and (max-width: 600px) {
