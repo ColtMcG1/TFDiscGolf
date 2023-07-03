@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en" theme-data="light">
   <head>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="keywords" content="thompson falls disc golf, thompson falls, disc golf, disc, golf, mountains, montana, montana disc golf" />
@@ -17,6 +21,8 @@
     <!--<base href="https://tfdiscgolf.com/" />-->
 
     <title>TF Disc Golf</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@100;300;400;500;700;900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="./styles/index.css" />
     
@@ -39,8 +45,8 @@
     />
     <link rel="manifest" href="./assets/site.webmanifest" />
 
-    <script src="./scripts/module1.js"></script>
-    <script src="./scripts/module2.js"></script>
+    <script defer src="./scripts/module1.js"></script>
+    <script defer src="./scripts/module2.js"></script>
     
   </head>
   <body>
@@ -135,15 +141,14 @@
           )
         );
     </script>
-    
-    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXadE7NnDDpd0QzkrNjL2TT2aZnmT8ZJA&callback=initMap?v=weekly" defer></script>-->
+
     <script
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDXadE7NnDDpd0QzkrNjL2TT2aZnmT8ZJA&callback=initMap&v=weekly"
       defer
     ></script>
     
     <!-- Google tag (gtag.js) -->
-    <script>
+    <script defer>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());

@@ -55,10 +55,10 @@ document.addEventListener("DOMContentLoaded", (event) => { //After load is compl
 
   button.addEventListener("click", () => { //After click
     changeTheme(icons);
-  });
+  }, {passive: true});
   
   button.addEventListener("click", () => { //Listen for theme change
     setMapTheme();
-  });
+  }, {passive: true});
   
-});
+}, {passive: true});
