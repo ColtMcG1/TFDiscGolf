@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf", "TFDiscGolf\TFDiscGolf.csproj", "{814FB517-6613-4E86-BB26-E79B5947FE88}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf", "TFDiscGolf\TFDiscGolf\TFDiscGolf.csproj", "{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf.Client", "TFDiscGolf.Client\TFDiscGolf.Client.csproj", "{F0542DAD-11AC-445D-ACC6-08D60832A752}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf.Client", "TFDiscGolf\TFDiscGolf.Client\TFDiscGolf.Client.csproj", "{76FCDCCE-B483-48CB-8870-E113CA9A4307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,14 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{814FB517-6613-4E86-BB26-E79B5947FE88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{814FB517-6613-4E86-BB26-E79B5947FE88}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{814FB517-6613-4E86-BB26-E79B5947FE88}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{814FB517-6613-4E86-BB26-E79B5947FE88}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F0542DAD-11AC-445D-ACC6-08D60832A752}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F0542DAD-11AC-445D-ACC6-08D60832A752}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F0542DAD-11AC-445D-ACC6-08D60832A752}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F0542DAD-11AC-445D-ACC6-08D60832A752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{76FCDCCE-B483-48CB-8870-E113CA9A4307}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{76FCDCCE-B483-48CB-8870-E113CA9A4307}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{76FCDCCE-B483-48CB-8870-E113CA9A4307}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{76FCDCCE-B483-48CB-8870-E113CA9A4307}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
