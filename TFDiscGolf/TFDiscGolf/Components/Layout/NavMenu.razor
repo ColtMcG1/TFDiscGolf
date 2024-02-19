@@ -5,10 +5,9 @@
 @rendermode InteractiveServer
 
 <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container text-center">
+    <div class="container text-center align-text-bottom align-content-between">
 
-        <div class="row row-col-3">
-            <div class="col">
+            <div class="d-flex">
                 @* Brand *@
                 <a class="navbar-brand" href="">TF Disc Golf</a>
 
@@ -18,33 +17,33 @@
                 </button>
             </div>
 
-            <div class="col">
+            <div class="d-flex">
                 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
                     <ul class="navbar-nav">
 
-
                         @* Home *@
-                        <li class="">
+                        <li class="p-sm-2">
                             <NavLink class="nav-link text-dark" href="" Match="NavLinkMatch.All">
                                 @*<span class="oi oi-home" aria-hidden="true"></span>*@ Home
                             </NavLink>
                         </li>
                         @* About *@
-                        <li class="">
+                    <li class="p-sm-2">
                             <NavLink class="nav-link text-dark" href="About">
                                 @*<span class="oi oi-plus" aria-hidden="true"></span>*@ About
                             </NavLink>
                         </li>
                         @* Privacy *@
-                        <li class="">
+                    <li class="p-sm-2">
                             <NavLink class="nav-link text-dark" href="Privacy">
                                 @*<span class="oi oi-list-rich" aria-hidden="true"></span>*@ Privacy
                             </NavLink>
                         </li>
+
                     </ul>
                 </div>
             </div>
-            <div class="col">
+            <div class="d-flex">
                 <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
                     <ul class="navbar-nav">
 
@@ -82,7 +81,6 @@
 
                     </ul>
                 </div>
-            </div>
         </div>
     </div>
 </nav>
