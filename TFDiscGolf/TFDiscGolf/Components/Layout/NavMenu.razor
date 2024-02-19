@@ -1,61 +1,121 @@
-﻿<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-    <div class="container">
+﻿@implements IDisposable
 
-        @* Brand *@
-        <a class="navbar-brand" href="">TF Disc Golf</a>
+@inject NavigationManager NavigationManager
 
-        @* Collapse Button *@
-        <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+@rendermode InteractiveServer
 
-        <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
-            <ul class="navbar-nav mb-2 mb-lg-0 mx-auto">
+<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+    <div class="container text-center">
+
+        <div class="row row-col-3">
+            <div class="col">
+                @* Brand *@
+                <a class="navbar-brand" href="">TF Disc Golf</a>
+
+                @* Collapse Button *@
+                <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+
+            <div class="col">
+                <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+                    <ul class="navbar-nav">
 
 
-                @* Home *@
-                <li class="">
-                    <NavLink class="nav-link text-dark" href="" Match="NavLinkMatch.All">
-                        @*<span class="oi oi-home" aria-hidden="true"></span>*@ Home
-                    </NavLink>
-                </li>
-                @* About *@
-                <li class="">
-                    <NavLink class="nav-link text-dark" href="About">
-                        @*<span class="oi oi-plus" aria-hidden="true"></span>*@ About
-                    </NavLink>
-                </li>
-                @* Privacy *@
-                <li class="">
-                    <NavLink class="nav-link text-dark" href="Privacy">
-                        @*<span class="oi oi-list-rich" aria-hidden="true"></span>*@ Privacy
-                    </NavLink>
-                </li>
-            </ul>
+                        @* Home *@
+                        <li class="">
+                            <NavLink class="nav-link text-dark" href="" Match="NavLinkMatch.All">
+                                @*<span class="oi oi-home" aria-hidden="true"></span>*@ Home
+                            </NavLink>
+                        </li>
+                        @* About *@
+                        <li class="">
+                            <NavLink class="nav-link text-dark" href="About">
+                                @*<span class="oi oi-plus" aria-hidden="true"></span>*@ About
+                            </NavLink>
+                        </li>
+                        @* Privacy *@
+                        <li class="">
+                            <NavLink class="nav-link text-dark" href="Privacy">
+                                @*<span class="oi oi-list-rich" aria-hidden="true"></span>*@ Privacy
+                            </NavLink>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col">
+                <div class="@NavMenuCssClass" @onclick="ToggleNavMenu">
+                    <ul class="navbar-nav">
 
-            <ul class="navbar-nav flex-grow-1">
+                        @* Login *@
+                        <AuthorizeView>
+                            <Authorized>
+                                <li class="px-3">
+                                    <NavLink class="nav-link" href="Account/Manage">
+                                        <span class="bi bi-person-fill-nav-menu" aria-hidden="true"></span> @context.User.Identity?.Name
+                                    </NavLink>
+                                </li>
+                                <li class="px-3">
+                                    <form action="Account/Logout" method="post">
+                                        <AntiforgeryToken />
+                                        <input type="hidden" name="ReturnUrl" value="@currentUrl" />
+                                        <button type="submit" class="nav-link">
+                                            <span class="bi bi-arrow-bar-left-nav-menu" aria-hidden="true"></span> Logout
+                                        </button>
+                                    </form>
+                                </li>
+                            </Authorized>
+                            <NotAuthorized>
+                                <li class="px-3">
+                                    <NavLink class="nav-link" href="Account/Register">
+                                        <span class="bi bi-person-nav-menu" aria-hidden="true"></span> Register
+                                    </NavLink>
+                                </li>
+                                <li class="px-3">
+                                    <NavLink class="nav-link" href="Account/Login">
+                                        <span class="bi bi-person-badge-nav-menu" aria-hidden="true"></span> Login
+                                    </NavLink>
+                                </li>
+                            </NotAuthorized>
+                        </AuthorizeView>
 
-                @* Login *@
-                <li class="">
-                    <NavLink class="nav-link text-dark" href="Login">
-                        @*<span class="oi oi-list-rich" aria-hidden="true"></span>*@ Login
-                    </NavLink>
-                </li>
-
-            </ul>
+                    </ul>
+                </div>
+            </div>
         </div>
     </div>
 </nav>
 
 @code {
-    bool collapseNavMenu = true;
+    private bool collapseNavMenu = true;
 
-    string baseMenuClass = "navbar-collapse";
+    private string baseMenuClass = "navbar-collapse";
 
-    string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
+    private string NavMenuCssClass => baseMenuClass + (collapseNavMenu ? " collapse" : "");
 
-    void ToggleNavMenu()
+    private void ToggleNavMenu()
     {
         collapseNavMenu = !collapseNavMenu;
+    }
+
+
+    private string? currentUrl;
+
+    protected override void OnInitialized()
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(NavigationManager.Uri);
+        NavigationManager.LocationChanged += OnLocationChanged;
+    }
+
+    private void OnLocationChanged(object? sender, LocationChangedEventArgs e)
+    {
+        currentUrl = NavigationManager.ToBaseRelativePath(e.Location);
+        StateHasChanged();
+    }
+
+    public void Dispose()
+    {
+        NavigationManager.LocationChanged -= OnLocationChanged;
     }
 }
