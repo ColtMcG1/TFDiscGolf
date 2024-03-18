@@ -1,5 +1,6 @@
 html, body {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    height: auto;
 }
 
 a, .btn-link {
@@ -56,4 +57,32 @@ padding-top: 0;
 
 .nav-item:last-of-type {
 padding-bottom:0;
+}
+
+.background-pathway:after
+{
+border:groove;
+}
+
+.background-pathway {
+    background-image: url("Pathway.JPG");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+
+    height: 50vh;
+}
+
+.btn-w-xs  { width: 50px;}
+.btn-w-sm  { width: 75px;}
+.btn-w-md  { width: 125px;}
+.btn-w-lg  { width: 175px;}
+.btn-w-xl  { width: 200px;}
+.btn-w-xxl { width: 225px;}
+
+.fade-bg {
+    mask-size: 100%;
+    mask-mode: alpha;
+    mask-image: linear-gradient(180deg, #ffff, 85%, #0000);
 }

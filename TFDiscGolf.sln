@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf", "TFDiscGolf\TFDiscGolf\TFDiscGolf.csproj", "{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TFDiscGolf", "TFDiscGolf\TFDiscGolf\TFDiscGolf.csproj", "{5FF8DBE1-0E1C-4F77-A779-44E017B8A3D4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TFDiscGolf.Client", "TFDiscGolf\TFDiscGolf.Client\TFDiscGolf.Client.csproj", "{76FCDCCE-B483-48CB-8870-E113CA9A4307}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TFDiscGolf.Client", "TFDiscGolf\TFDiscGolf.Client\TFDiscGolf.Client.csproj", "{76FCDCCE-B483-48CB-8870-E113CA9A4307}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
