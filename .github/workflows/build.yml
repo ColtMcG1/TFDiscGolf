@@ -12,6 +12,12 @@ on:
     paths:
     - '**.cs'
     - '**.csproj'
+
+  workflow_dispatch:
+    branches: [ main ]
+    paths:
+    - '**.cs'
+    - '**.csproj'
     
 
 env:
