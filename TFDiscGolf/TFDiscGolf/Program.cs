@@ -27,7 +27,7 @@ builder.Services.AddAuthentication(options =>
     {
 #if DEBUG
         o.ClientId = builder.Configuration["Authentication:Google:ClientId"] ??= "";
-        o.ClientSecret = builder.Configuratiouthentication:Google:ClientId"] ??= "";
+        o.ClientSecret = builder.Configuration["Authentication:Google:ClientId"] ??= "";
 #else
         o.ClientId     = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
         o.ClientSecret = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
@@ -36,11 +36,15 @@ builder.Services.AddAuthentication(options =>
     })
     .AddIdentityCookies();
 
+Console.Write("Added Auth");
+
 #if DEBUG
 var connectionString = builder.Configuration.GetConnectionString("TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
 #else
 var connectionString = System.Environment.GetEnvironmentVariable("ConnectionStrings_TFDiscGolfContextConnection");
 #endif
+
+Console.Write("DB - ", connectionString);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -50,6 +54,8 @@ builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddSignInManager()
     .AddDefaultTokenProviders();
+
+Console.Write("Added DB");
 
 builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
 
@@ -83,5 +89,7 @@ app.MapRazorComponents<App>()
 
 // Add additional endpoints required by the Identity /Account Razor components.
 app.MapAdditionalIdentityEndpoints();
+
+Console.Write("Starting");
 
 app.Run();
