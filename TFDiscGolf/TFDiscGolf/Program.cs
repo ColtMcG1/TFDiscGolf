@@ -7,9 +7,12 @@ using TFDiscGolf.Components.Account;
 using TFDiscGolf.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-var env = Environment.GetEnvironmentVariables();
+
+
 try
 {
+    builder.Configuration.AddJsonFile("appsettings.json", false, true);
+    
     // Add services to the container.
     builder.Services.AddRazorComponents()
         .AddInteractiveServerComponents()
@@ -27,13 +30,13 @@ try
         })
         .AddGoogle(o =>
         {
-            o.ClientId = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
-            o.ClientSecret = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
+            o.ClientId = builder.Configuration.GetValue<string>("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found. Authentication_Google_ClientId");
+            o.ClientSecret = builder.Configuration.GetValue<string>("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found. Authentication_Google_ClientSecret");
             o.CallbackPath = "/api/oauth/google";
         })
         .AddIdentityCookies();
 
-    var connectionString = System.Environment.GetEnvironmentVariable("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
+    var connectionString = builder.Configuration.GetConnectionString("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'ConnectionStrings_TFDiscGolfContextConnection' not found.");
 
     builder.Services.AddDbContext<ApplicationDbContext>(options =>
         options.UseSqlServer(connectionString));
