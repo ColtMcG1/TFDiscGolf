@@ -7,72 +7,79 @@ using TFDiscGolf.Components.Account;
 using TFDiscGolf.Data;
 
 var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-builder.Services.AddRazorComponents()
-    .AddInteractiveServerComponents()
-    .AddInteractiveWebAssemblyComponents();
-
-builder.Services.AddCascadingAuthenticationState();
-builder.Services.AddScoped<IdentityUserAccessor>();
-builder.Services.AddScoped<IdentityRedirectManager>();
-builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
-
-builder.Services.AddAuthentication(options =>
-    {
-        options.DefaultScheme = IdentityConstants.ApplicationScheme;
-        options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
-    })
-    .AddGoogle(o =>
-    {
-        o.ClientId     = Environment.GetEnvironmentVariable("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
-        o.ClientSecret = Environment.GetEnvironmentVariable("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
-        o.CallbackPath = "/api/oauth/google";
-    })
-    .AddIdentityCookies();
-
-var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
-
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-
-builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddSignInManager()
-    .AddDefaultTokenProviders();
-
-builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
-
-var app = builder.Build();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+var env = Environment.GetEnvironmentVariables();
+try
 {
-    app.UseWebAssemblyDebugging();
-    app.UseMigrationsEndPoint();
-    app.UseHttpsRedirection();
-    app.UseHsts();
-}
-else
+    // Add services to the container.
+    builder.Services.AddRazorComponents()
+        .AddInteractiveServerComponents()
+        .AddInteractiveWebAssemblyComponents();
+
+    builder.Services.AddCascadingAuthenticationState();
+    builder.Services.AddScoped<IdentityUserAccessor>();
+    builder.Services.AddScoped<IdentityRedirectManager>();
+    builder.Services.AddScoped<AuthenticationStateProvider, PersistingRevalidatingAuthenticationStateProvider>();
+
+    builder.Services.AddAuthentication(options =>
+        {
+            options.DefaultScheme = IdentityConstants.ApplicationScheme;
+            options.DefaultSignInScheme = IdentityConstants.ExternalScheme;
+        })
+        .AddGoogle(o =>
+        {
+            o.ClientId = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
+            o.ClientSecret = System.Environment.GetEnvironmentVariable("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
+            o.CallbackPath = "/api/oauth/google";
+        })
+        .AddIdentityCookies();
+
+    var connectionString = System.Environment.GetEnvironmentVariable("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
+
+    builder.Services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlServer(connectionString));
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+    builder.Services.AddIdentityCore<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = true)
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddSignInManager()
+        .AddDefaultTokenProviders();
+
+    builder.Services.AddSingleton<IEmailSender<ApplicationUser>, IdentityNoOpEmailSender>();
+
+    var app = builder.Build();
+
+    // Configure the HTTP request pipeline.
+    if (app.Environment.IsDevelopment())
+    {
+        app.UseWebAssemblyDebugging();
+        app.UseMigrationsEndPoint();
+        app.UseHttpsRedirection();
+        app.UseHsts();
+    }
+    else
+    {
+        app.UseExceptionHandler("/Error", createScopeForErrors: true);
+        app.UseForwardedHeaders();
+    }
+
+    app.UseStaticFiles();
+
+    app.UseAuthentication();
+    app.UseAuthorization();
+
+    app.UseAntiforgery();
+
+    app.MapRazorComponents<App>()
+        .AddInteractiveServerRenderMode()
+        .AddInteractiveWebAssemblyRenderMode()
+        .AddAdditionalAssemblies(typeof(Counter).Assembly);
+
+    // Add additional endpoints required by the Identity /Account Razor components.
+    app.MapAdditionalIdentityEndpoints();
+
+    app.Run();
+
+} catch (Exception e)
 {
-    app.UseExceptionHandler("/Error", createScopeForErrors: true);
-    app.UseForwardedHeaders();
+    File.WriteAllText("log.txt", e.Message);
 }
-
-app.UseStaticFiles();
-
-app.UseAuthentication();
-app.UseAuthorization();
-
-app.UseAntiforgery();
-
-app.MapRazorComponents<App>()
-    .AddInteractiveServerRenderMode()
-    .AddInteractiveWebAssemblyRenderMode()
-    .AddAdditionalAssemblies(typeof(Counter).Assembly);
-
-// Add additional endpoints required by the Identity /Account Razor components.
-app.MapAdditionalIdentityEndpoints();
-
-app.Run();
