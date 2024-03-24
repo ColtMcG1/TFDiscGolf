@@ -25,13 +25,13 @@ builder.Services.AddAuthentication(options =>
     })
     .AddGoogle(o =>
     {
-        o.ClientId     = builder.Configuration.GetValue<string>("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
-        o.ClientSecret = builder.Configuration.GetValue<string>("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
+        o.ClientId     = Environment.GetEnvironmentVariable("Authentication_Google_ClientId") ?? throw new InvalidOperationException("Client ID not found");
+        o.ClientSecret = Environment.GetEnvironmentVariable("Authentication_Google_ClientSecret") ?? throw new InvalidOperationException("Client secret not found.");
         o.CallbackPath = "/api/oauth/google";
     })
     .AddIdentityCookies();
 
-var connectionString = builder.Configuration.GetValue<string>("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
+var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings_TFDiscGolfContextConnection") ?? throw new InvalidOperationException("Connection string 'TFDiscGolfContextConnection' not found.");
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
